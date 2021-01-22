@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>
+            Pdf To Text File Converter
+        </title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <div style="margin-left: 30%">
+            <h1>
+                Pdf To Text File Converter
+            </h1>
+            <div class="form-group" style="margin-top: 2%">
+            <form method="POST" action="{% url 'textFileConverter' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div style="margin-left: 7%">
+            <label for="PdfFile"><strong>Pdf File : </strong></label>
+            <input type="file"  name="pdfFile" required>
+            </div>
+            <div style="margin-top: 2%;margin-left: 15%">
+            <input type="submit" class="btn btn-success" value="Convert">
+            </div>
+            </form>
+            {% if showTextFile == 1 %} 
+                <span style="margin-left: 15%"><strong>Text File : </strong> <a href="{% url 'export_text_file' %}"><i class="fa fa-download"></i></a></span> 
+            {% endif %} 
+            </div>
+        </div>
+    </body>
+</html>
